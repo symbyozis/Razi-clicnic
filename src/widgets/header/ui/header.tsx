@@ -63,11 +63,10 @@ export const Header: React.FC = () => {
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`text-base font-medium transition-colors hover:text-[#21CDAA] ${
-                      pathname === href
+                    className={`text-base font-medium transition-colors hover:text-[#21CDAA] ${pathname === href
                         ? 'text-[#21CDAA] border-b-2 border-[#21CDAA] pb-1'
                         : 'text-gray-700'
-                    }`}
+                      }`}
                   >
                     {title}
                   </Link>

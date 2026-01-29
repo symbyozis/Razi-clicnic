@@ -36,8 +36,8 @@ export const CheckupCard: React.FC<CheckupCardProps> = ({
             </li>
           ))}
         </ul>
-        <Button 
-          variant="primary" 
+        <Button
+          variant="primary"
           className="w-full"
           onClick={() => window.location.href = link}
         >
