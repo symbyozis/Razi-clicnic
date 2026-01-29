@@ -3,8 +3,6 @@ import Slider from "react-slick";
 
 import { Typography, Button, Box, Grid } from "@mui/material";
 
-import styles from './main.module.scss'
-
 type TSlide = {
     image: string
     title: string
@@ -52,7 +50,7 @@ export const CarouselMain: React.FC = () => {
                         </Grid>
                         <Grid size={{ md: 8 }}>
                             <figure
-                                className={styles.sliderImage}
+                                className="w-full bg-no-repeat bg-cover bg-center h-[76vh] min-h-[500px] rounded-[20px]"
                                 style={{ backgroundImage: `url(${slide.image})` }}
                             />
                         </Grid>

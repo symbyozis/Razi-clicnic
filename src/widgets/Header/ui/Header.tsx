@@ -5,7 +5,6 @@ import { Container, Grid, Box, Link as MuiLink } from "@mui/material";
 import { phoneFormat } from "@/shared/lib";
 import { NavItem } from "@/shared/types";
 import appConfig from "@/shared/config/app.config.json";
-import styles from "./Header.module.scss";
 
 const navItems: NavItem[] = [
   { title: "Главная", href: "/" },
@@ -21,7 +20,9 @@ export const Header: React.FC = () => {
 
   return (
     <Box sx={{ py: 5, position: "relative" }}>
-      {pathname === "/" && <div className={styles.headerBG} />}
+      {pathname === "/" && (
+        <div className="bg-[#F5F8F9] w-1/2 absolute top-0 right-0 h-[80vh] z-0 min-h-[600px] rounded-bl-[20px]" />
+      )}
       <Container>
         <Grid container alignItems="center" spacing={3}>
           <Grid size={{ md: 3 }}>
@@ -66,7 +67,7 @@ export const Header: React.FC = () => {
               {navItems.map(({ title, href }) => (
                 <Link
                   key={href}
-                  className={`${styles.navLink} ${pathname === href ? styles.navActive : ""
+                  className={`font-medium text-base text-[#626262] hover:text-[var(--primary-color)] relative after:content-[''] after:clear-both after:block after:h-[2px] after:w-0 after:mb-[10px] after:transition-all after:duration-300 after:ease-in hover:after:w-[15px] ${pathname === href ? "text-[var(--primary-color)] after:w-[15px]" : ""
                     }`}
                   href={href}
                 >

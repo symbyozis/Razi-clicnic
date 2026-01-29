@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from "@/application/styles/Home.module.scss";
 
 export interface IServiceItem {
     image: string,
@@ -10,10 +9,10 @@ export interface IServiceItem {
 export const ServiceItem: React.FC<IServiceItem> = (props) => {
     const { image, title, text } = props
     return (
-        <div className={styles.serviceItem}>
-            <img src={image} />
-            <h6>{title}</h6>
-            <p>{text}</p>
+        <div className="w-[250px] bg-white py-[45px] px-[40px] rounded-[20px] text-center border border-[rgba(222,229,234,0.5)] transition-all duration-300 ease-in hover:shadow-[0_0_15px_#cbc9c9] last:mt-[40px]">
+            <img src={image} className="h-[55px] rounded-full mx-auto" />
+            <h6 className="text-[#585858] text-base leading-[26px] font-semibold capitalize mt-[10px] break-words">{title}</h6>
+            <p className="text-sm mb-0">{text}</p>
         </div>
     );
 }

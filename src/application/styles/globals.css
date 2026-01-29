@@ -1,4 +1,16 @@
-@use 'variables';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: rgba(33, 205, 170, 1);
+  --secondary-color: #585858;
+  --heading-color: #09657b;
+  --input-bg: 133, 150, 167;
+  --main-font: 'Montserrat', sans-serif;
+  --heading-font: 'Raleway', sans-serif;
+  --border-radius: 20px;
+}
 
 * {
   box-sizing: border-box;

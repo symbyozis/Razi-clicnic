@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 
 import { Container, Grid, Box, Link } from '@mui/material';
 
-import styles from './Header.module.scss';
 import { phoneFormat } from "@/shared/lib";
 import appConfig from "@/shared/config/app.config.json";
 
@@ -21,14 +20,11 @@ const navItems: TNavItem[] = [
 ]
 
 export const Header: React.FC = () => {
-	const { pathname } = useRouter()
-
 	const [openSearch, setOpenSearch] = React.useState(false)
 	const [openMenu, setOpenMenu] = React.useState(false)
 	const { contacts } = appConfig
 	return (
 		<Box sx={{ py: 5, position: 'relative' }}>
-			{pathname === '/' && <div className={styles.headerBG} />}
 			<Container>
 				<Grid container alignItems="center" spacing={3}>
 					<Grid size={{ md: 3 }}>
@@ -55,7 +51,6 @@ export const Header: React.FC = () => {
 							{navItems.map(({ title, href }) => (
 								<Link
 									key={href}
-									className={`${styles.navLink} ${pathname === href ? styles.navActive : ''}`}
 									underline="hover"
 									href={href}
 								>

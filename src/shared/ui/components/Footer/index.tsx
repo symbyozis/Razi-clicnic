@@ -3,8 +3,6 @@ import { Box, Container, List, ListItem, ListItemButton, ListItemIcon, Grid, Typ
 import Link from "next/link";
 import { Instagram, Telegram, EmailOutlined, LocalPhoneOutlined, PlaceOutlined } from '@mui/icons-material'
 import appConfig from "@/shared/config/app.config.json";
-
-import styles from './Footer.module.scss'
 import { phoneFormat } from "@/shared/lib";
 
 const socLinks = [
@@ -108,43 +106,43 @@ export const Footer: React.FC = (props) => {
 								</Box>
 							</Grid>
 							<Grid size={{ md: 2 }}>
-								<Typography variant="h4" className={styles.nav__title}>
+								<h4 className="text-[1.1rem] font-semibold leading-[31px] mb-5 relative text-[#707070] after:content-[''] after:clear-both after:table after:h-[2px] after:w-[40px] after:bg-[var(--primary-color)] after:mt-[10px] after:mb-[25px] after:block">
 									{patients.capture}
-								</Typography>
+								</h4>
 								<ul>
 									{patients.items.map(({ title, link }) => (
-										<li key={link} className={styles.nav__item}>
-											<Link href={link} key={link} className={styles.nav__link}>{title}</Link>
+										<li key={link} className="block break-words text-[#DEE5EA] text-sm leading-[30px]">
+											<Link href={link} className="text-[#A7A7A7] font-[var(--heading-font)] font-medium capitalize relative hover:text-[var(--primary-color)] after:content-[''] after:absolute after:left-[2px] after:bottom-[-8px] after:font-black after:clear-both after:table after:h-[2px] after:w-0 after:bg-[var(--primary-color)] after:transition-all after:duration-300 after:ease-in hover:after:w-[15px]">{title}</Link>
 										</li>
 									))}
 								</ul>
 							</Grid>
 							<Grid size={{ md: 2 }}>
-								<Typography variant="h4" className={styles.nav__title}>
+								<h4 className="text-[1.1rem] font-semibold leading-[31px] mb-5 relative text-[#707070] after:content-[''] after:clear-both after:table after:h-[2px] after:w-[40px] after:bg-[var(--primary-color)] after:mt-[10px] after:mb-[25px] after:block">
 									{support.capture}
-								</Typography>
+								</h4>
 								<ul>
 									{support.items.map(({ title, link }) => (
-										<li key={link} className={styles.nav__item}>
-											<Link href={link} key={link} className={styles.nav__link}>{title}</Link>
+										<li key={link} className="block break-words text-[#DEE5EA] text-sm leading-[30px]">
+											<Link href={link} className="text-[#A7A7A7] font-[var(--heading-font)] font-medium capitalize relative hover:text-[var(--primary-color)] after:content-[''] after:absolute after:left-[2px] after:bottom-[-8px] after:font-black after:clear-both after:table after:h-[2px] after:w-0 after:bg-[var(--primary-color)] after:transition-all after:duration-300 after:ease-in hover:after:w-[15px]">{title}</Link>
 										</li>
 									))}
 								</ul>
 							</Grid>
 							<Grid size={{ md: 4 }}>
-								<Typography variant="h4" className={styles.nav__title}>
+								<h4 className="text-[1.1rem] font-semibold leading-[31px] mb-5 relative text-[#707070] after:content-[''] after:clear-both after:table after:h-[2px] after:w-[40px] after:bg-[var(--primary-color)] after:mt-[10px] after:mb-[25px] after:block">
 									Рассылка
-								</Typography>
+								</h4>
 								<Typography sx={{ fontSize: 14, fontWeight: 500, mb: 2 }}>
 									Получайте наши предложения и новости на свой почтовый ящик
 								</Typography>
 
 								<form>
-									<div className={styles.inputGroup}>
-										<input type="email" className={styles.formControl} placeholder="Введите email" />
-										<div className={styles.inputGroupAppend}>
-											<div className={styles.inputGroupText}>
-												<input type="submit" value="Подписаться" />
+									<div className="relative flex flex-wrap items-stretch w-full">
+										<input type="email" className="block h-[calc(1.5em+0.75rem+2px)] px-3 py-[0.375rem] relative flex-1 w-[1%] mb-0 text-base font-normal leading-[1.5] text-[#495057] bg-transparent border border-[var(--primary-color)] rounded-l-[50px] transition-all duration-150 ease-in-out placeholder:text-black placeholder:text-sm placeholder:font-light placeholder:italic placeholder:pl-[14px]" placeholder="Введите email" />
+										<div className="-ml-5 flex z-[3]">
+											<div className="flex items-center mb-0 leading-[1.5] text-[#495057] text-center whitespace-nowrap bg-[var(--primary-color)] border-none rounded-[50px] text-sm px-[45px] font-medium cursor-pointer">
+												<input type="submit" value="Подписаться" className="text-white border-none bg-transparent cursor-pointer" />
 											</div>
 										</div>
 									</div>

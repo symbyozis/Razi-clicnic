@@ -2,8 +2,6 @@ import React from 'react';
 import Slider from "react-slick";
 import { Box, Typography, Grid } from "@mui/material";
 
-import styles from './reviews.module.scss'
-
 const CarouselReviews = () => {
 	const [sliderNav, setSliderNav] = React.useState<Slider | undefined>(undefined);
 	const [slider, setSlider] = React.useState<Slider | undefined>(undefined);
@@ -127,7 +125,6 @@ const CarouselReviews = () => {
 				<Slider
 					{...settingsNav}
 					ref={sliderNavRef => setSliderNav(sliderNavRef ?? undefined)}
-					className={styles.reviewsSlider}
 				>
 					{reviews.map(review => (
 						<div className="imageWrap" key={review.id}>

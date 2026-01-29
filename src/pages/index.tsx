@@ -12,7 +12,6 @@ import {
   CarouselReviews,
   CarouselNews,
 } from "@/shared/ui";
-import styles from '@/application/styles/Home.module.scss';
 
 const serviceItems: IServiceItem[] = [
   {
@@ -69,7 +68,7 @@ const HomePage: NextPage = () => {
           <CarouselMain />
         </Container>
       </Box>
-      <Box sx={{ py: 5 }} className={styles.service}>
+      <Box sx={{ py: 5 }} className="bg-[#F5F8F9]">
         <Container>
           <Grid container spacing={3} alignItems={"center"}>
             <Grid size={{ md: 4 }}>

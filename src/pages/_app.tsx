@@ -1,5 +1,5 @@
-import "slick-carousel/slick/slick.scss";
-import "slick-carousel/slick/slick-theme.scss";
-import "@/application/styles/globals.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "@/application/styles/globals.css";
 import App from "@/application";
 export default App;
