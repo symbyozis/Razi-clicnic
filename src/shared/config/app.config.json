@@ -1,0 +1,13 @@
+{
+  "appName": "Razi Clinic",
+  "contacts": {
+    "phone": "+79991234567",
+    "email": "info@razi-clinic.com",
+    "address": "г. Москва, ул. Примерная, д. 1"
+  },
+  "social": {
+    "instagram": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "telegram": "https://t.me"
+  }
+}
