@@ -1,6 +1,7 @@
 import React from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, Grid, Box, Link } from "@mui/material";
+import { Container, Grid, Box, Link as MuiLink } from "@mui/material";
 import { phoneFormat } from "@/shared/lib";
 import { NavItem } from "@/shared/types";
 import appConfig from "@/shared/config/app.config.json";
@@ -24,7 +25,7 @@ export const Header: React.FC = () => {
       <Container>
         <Grid container alignItems="center" spacing={3}>
           <Grid size={{ md: 3 }}>
-            <Link href="/">
+            <Link href="/" style={{ display: 'inline-block' }}>
               <svg
                 width="134"
                 height="58"
@@ -67,7 +68,6 @@ export const Header: React.FC = () => {
                   key={href}
                   className={`${styles.navLink} ${pathname === href ? styles.navActive : ""
                     }`}
-                  underline="hover"
                   href={href}
                 >
                   {title}
@@ -83,14 +83,14 @@ export const Header: React.FC = () => {
                 position: "relative",
               }}
             >
-              <Link
+              <MuiLink
                 href={`tel:${contacts.phone}`}
                 color="primary"
                 underline="hover"
                 sx={{ fontSize: "18px", fontWeight: "500" }}
               >
                 {phoneFormat(contacts.phone)}
-              </Link>
+              </MuiLink>
             </Box>
           </Grid>
         </Grid>
