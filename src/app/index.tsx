@@ -1,7 +1,7 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { ThemeProvider } from "@/application/providers";
+import { ThemeProvider } from "@/app/providers";
 import { Header } from "@/widgets/Header";
 import { Footer } from "@/widgets/Footer";
 
