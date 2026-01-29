@@ -1,12 +1,11 @@
 import React from 'react';
-import Grid2 from "@mui/material/Unstable_Grid2";
 import Slider from "react-slick";
-import {Box, Typography} from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 
 import styles from './news.module.scss'
 
 const CarouselNews = () => {
-	const [slider, setSlider] = React.useState<Slider|null>(null);
+	const [slider, setSlider] = React.useState<Slider | null>(null);
 
 	// React.useEffect(() => {
 	// 	fetch('https://api.telegram.org/bot7439302368:AAEy0XmJAMyDqtsKEZZxHuMISB7DJkiyQAQ/getUpdates')
@@ -61,7 +60,7 @@ const CarouselNews = () => {
 		},
 	]
 	return (
-		<Grid2 container px={{ display: 'block'}}>
+		<Grid container px={{ display: 'block' }}>
 			<Slider
 				{...settings}
 			>
@@ -85,36 +84,36 @@ const CarouselNews = () => {
 
 							}}
 						>
+							<Box
+								sx={{
+									background: 'rgba(0, 0, 0, 0.3)',
+									display: 'flex',
+									alignItems: 'end',
+									width: '100%',
+									height: '100%'
+								}}
+							>
 								<Box
+									component="figcaption"
 									sx={{
-										background: 'rgba(0, 0, 0, 0.3)',
-										display: 'flex',
-										alignItems: 'end',
+										padding: '0 40px 20px 40px',
 										width: '100%',
-										height: '100%'
+										color: 'white'
 									}}
 								>
-									<Box
-										component="figcaption"
-										sx={{
-											padding: '0 40px 20px 40px',
-											width: '100%',
-											color: 'white'
-										}}
-									>
-										<Typography>
-											{/*{new Date().toLocaleDateString()}*/}
-										</Typography>
-										<Typography variant="h6" sx={{ mb: 1}}>
-											{item.title}
-										</Typography>
-									</Box>
+									<Typography>
+										{/*{new Date().toLocaleDateString()}*/}
+									</Typography>
+									<Typography variant="h6" sx={{ mb: 1 }}>
+										{item.title}
+									</Typography>
 								</Box>
+							</Box>
 						</Box>
 					</Box>
 				))}
 			</Slider>
-		</Grid2>
+		</Grid>
 	)
 }
 

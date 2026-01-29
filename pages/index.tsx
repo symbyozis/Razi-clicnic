@@ -1,9 +1,8 @@
-import React from "react";
 import { NextPage } from "next";
 
-
-import { Container, Button, Typography, Box, CardContent, Card, TextField, MenuItem } from '@mui/material';
-import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+import { Container, Button, Typography, Box, Card, TextField, MenuItem } from '@mui/material';
+import { Grid } from '@mui/material';
+// Grid version 2
 
 import MainLayout from '../layouts/MainLayout'
 import SectionLayout from "../layouts/SectionLayout";
@@ -77,8 +76,8 @@ const Home: NextPage = () => {
                 </Box>
                 <Box sx={{ py: 5 }} className={styles.service}>
                     <Container>
-                        <Grid2 container spacing={3} alignItems={"center"}>
-                            <Grid2 md={4}>
+                        <Grid container spacing={3} alignItems={"center"}>
+                            <Grid size={{ md: 4 }}>
                                 <Typography variant="h3">
                                     Почему пациенты выбирают нашу клинику?
                                 </Typography>
@@ -86,32 +85,32 @@ const Home: NextPage = () => {
                                     Dr Linda Freemanis one of the best in, In the world, In the Galaxy. There are many variations of passages of Lorem available, but the have suffered alteration in some form, by injected humour.
                                 </Typography>
                                 <Button variant="contained">Learn more</Button>
-                            </Grid2>
-                            <Grid2 md={7} mdOffset={1}>
-                                <Grid2 container>
-                                    <Grid2 md={6}>
+                            </Grid>
+                            <Grid size={{ md: 7 }} offset={{ md: 1 }}>
+                                <Grid container>
+                                    <Grid size={{ md: 6 }}>
                                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end', pr: 3 }}>
                                             {serviceItems.filter((_, i) => i < 2).map(item => (
                                                 <ServiceItem key={item.title} {...item} />
                                             ))}
                                         </Box>
-                                    </Grid2>
-                                    <Grid2 md={6}>
+                                    </Grid>
+                                    <Grid size={{ md: 6 }}>
                                         <Box sx={{ pt: 5, mt: 3 }}>
                                             {serviceItems.filter((_, i) => i >= 2).map(item => (
                                                 <ServiceItem key={item.title} {...item} />
                                             ))}
                                         </Box>
-                                    </Grid2>
-                                </Grid2>
-                            </Grid2>
-                        </Grid2>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Container>
                 </Box>
                 <SectionLayout title="Наши чекапы">
-                    <Grid2 container spacing={3} alignItems={"center"}>
+                    <Grid container spacing={3} alignItems={"center"}>
                         {checkups.map(checkup => (
-                            <Grid2 md={4} key={checkup.name} sx={{
+                            <Grid size={{ md: 4 }} key={checkup.name} sx={{
                                 '&:nth-child(2)': {
                                     transform: 'scaleY(1.1)'
                                 },
@@ -119,9 +118,9 @@ const Home: NextPage = () => {
                                 <Checkup
                                     {...checkup}
                                 />
-                            </Grid2>
+                            </Grid>
                         ))}
-                    </Grid2>
+                    </Grid>
                 </SectionLayout>
                 <SectionLayout title="Наши доктора">
                     <CarouselDoctors />
@@ -133,8 +132,8 @@ const Home: NextPage = () => {
                         boxShadow: 'none',
                         borderRadius: '20px'
                     }} >
-                        <Grid2 container alignItems="center">
-                            <Grid2 md={4}>
+                        <Grid container alignItems="center">
+                            <Grid size={{ md: 4 }}>
                                 <Box
                                     component="img"
                                     src="https://placehold.co/900"
@@ -146,10 +145,10 @@ const Home: NextPage = () => {
                                 >
 
                                 </Box>
-                            </Grid2>
-                            <Grid2 md={8} sx={{ px: 5 }}>
-                                <Grid2 container spacing={3}>
-                                    <Grid2 md={6}>
+                            </Grid>
+                            <Grid size={{ md: 8 }} sx={{ px: 5 }}>
+                                <Grid container spacing={3}>
+                                    <Grid size={{ md: 6 }}>
                                         <div>
                                             <Box
                                                 component="label"
@@ -165,7 +164,7 @@ const Home: NextPage = () => {
                                             <TextField
                                                 size="small"
                                                 fullWidth
-                                                sx={{mb: 2, background: 'rgba(var(--input-bg), .15)'}}
+                                                sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}
                                             />
                                         </div>
                                         <div>
@@ -183,7 +182,7 @@ const Home: NextPage = () => {
                                             <TextField
                                                 size="small"
                                                 fullWidth
-                                                sx={{mb: 2, background: 'rgba(var(--input-bg), .15)'}}
+                                                sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}
                                             />
                                         </div>
                                         <div>
@@ -202,7 +201,7 @@ const Home: NextPage = () => {
                                                 select
                                                 size="small"
                                                 fullWidth
-                                                sx={{mb: 2, background: 'rgba(var(--input-bg), .15)'}}
+                                                sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}
                                             >
                                                 {['Гинеколог', 'Невролог', 'Педиатр'].map((option) => (
                                                     <MenuItem key={option} value={option}>
@@ -213,8 +212,8 @@ const Home: NextPage = () => {
                                         </div>
 
                                         <Button variant="contained" sx={{ marginTop: '20px' }}>Создать запись</Button>
-                                    </Grid2>
-                                    <Grid2 md={6}>
+                                    </Grid>
+                                    <Grid size={{ md: 6 }}>
                                         <div>
                                             <Box
                                                 component="label"
@@ -231,7 +230,7 @@ const Home: NextPage = () => {
                                                 select
                                                 size="small"
                                                 fullWidth
-                                                sx={{mb: 2, background: 'rgba(var(--input-bg), .15)'}}
+                                                sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}
                                             >
                                                 {['Муж.', 'Жен.'].map((option) => (
                                                     <MenuItem key={option} value={option}>
@@ -256,7 +255,7 @@ const Home: NextPage = () => {
                                                 type="date"
                                                 size="small"
                                                 fullWidth
-                                                sx={{mb: 2, background: 'rgba(var(--input-bg), .15)'}}
+                                                sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}
                                             />
                                         </div>
 
@@ -285,24 +284,24 @@ const Home: NextPage = () => {
                                             </TextField>
                                         </div>
 
-                                    </Grid2>
-                                </Grid2>
-                            </Grid2>
-                        </Grid2>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Card>
                 </SectionLayout>
                 <SectionLayout title="Отзывы" container={false}>
-                    <CarouselReviews/>
+                    <CarouselReviews />
                 </SectionLayout>
                 <SectionLayout title="Наши новости" container={false}>
-                    <Box sx={{marginLeft: 'calc((100% - min(90%, 70.5rem))/2)'}}>
-                        <CarouselNews/>
+                    <Box sx={{ marginLeft: 'calc((100% - min(90%, 70.5rem))/2)' }}>
+                        <CarouselNews />
                     </Box>
                 </SectionLayout>
                 <section>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11625.100768565688!2d44.8098561!3d43.245654!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb3f5e856b63c4858!2z0JfQtNC-0YDQvtCy0YzQtSDQv9C70Y7RgQ!5e0!3m2!1sru!2sru!4v1673267497613!5m2!1sru!2sru"
-                        width="100%" height="450" style={{border: 0}} allowFullScreen loading="lazy"
+                        width="100%" height="450" style={{ border: 0 }} allowFullScreen loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                     />
                 </section>

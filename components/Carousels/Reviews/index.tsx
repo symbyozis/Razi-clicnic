@@ -1,13 +1,12 @@
 import React from 'react';
-import Grid2 from "@mui/material/Unstable_Grid2";
 import Slider from "react-slick";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 
 import styles from './reviews.module.scss'
 
 const CarouselReviews = () => {
-	const [sliderNav, setSliderNav] = React.useState<Slider | null>(null);
-	const [slider, setSlider] = React.useState<Slider | null>(null);
+	const [sliderNav, setSliderNav] = React.useState<Slider | undefined>(undefined);
+	const [slider, setSlider] = React.useState<Slider | undefined>(undefined);
 
 	const settingsNav = {
 		autoplay: true,
@@ -17,7 +16,7 @@ const CarouselReviews = () => {
 		slidesToScroll: 1,
 		dots: false,
 		arrows: true,
-		asNavFor: slider,
+		asNavFor: slider || undefined,
 		responsive: [
 			{
 				breakpoint: 1201,
@@ -50,7 +49,7 @@ const CarouselReviews = () => {
 		slidesToScroll: 1,
 		autoplay: false,
 		arrows: false,
-		asNavFor: sliderNav,
+		asNavFor: sliderNav || undefined,
 	}
 
 	const reviews = [
@@ -98,11 +97,11 @@ const CarouselReviews = () => {
 		},
 	]
 	return (
-		<Grid2 container spacing={3} alignItems="center">
-			<Grid2 md={5}>
+		<Grid container spacing={3} alignItems="center">
+			<Grid size={{ md: 5 }}>
 				<Slider
 					{...settings}
-					ref={sliderRef => setSlider(sliderRef)}
+					ref={sliderRef => setSlider(sliderRef ?? undefined)}
 				>
 					{reviews.map(review => (
 						<Box
@@ -123,11 +122,11 @@ const CarouselReviews = () => {
 						</Box>
 					))}
 				</Slider>
-			</Grid2>
-			<Grid2 md={7}>
+			</Grid>
+			<Grid size={{ md: 7 }}>
 				<Slider
 					{...settingsNav}
-					ref={sliderNavRef => setSliderNav(sliderNavRef)}
+					ref={sliderNavRef => setSliderNav(sliderNavRef ?? undefined)}
 					className={styles.reviewsSlider}
 				>
 					{reviews.map(review => (
@@ -147,8 +146,8 @@ const CarouselReviews = () => {
 						</div>
 					))}
 				</Slider>
-			</Grid2>
-		</Grid2>
+			</Grid>
+		</Grid>
 	)
 }
 

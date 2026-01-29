@@ -1,8 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
 
-import { Typography, Button, Box } from "@mui/material";
-import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+import { Typography, Button, Box, Grid } from "@mui/material";
 
 import styles from './main.module.scss'
 
@@ -45,19 +44,19 @@ export const CarouselMain: React.FC = () => {
         <Slider {...settings}>
             {slides.map(slide => (
                 <Box key={slide.title}>
-                    <Grid2 container alignItems="center" spacing={3}>
-                        <Grid2 md={4}>
+                    <Grid container alignItems="center" spacing={3}>
+                        <Grid size={{ md: 4 }}>
                             <Typography variant="h1">{slide.title}</Typography>
                             <Typography sx={{ my: 3 }}>{slide.text}</Typography>
                             <Button variant="contained" href={slide.link}>Make Appointment</Button>
-                        </Grid2>
-                        <Grid2 md={8}>
+                        </Grid>
+                        <Grid size={{ md: 8 }}>
                             <figure
                                 className={styles.sliderImage}
                                 style={{ backgroundImage: `url(${slide.image})` }}
                             />
-                        </Grid2>
-                    </Grid2>
+                        </Grid>
+                    </Grid>
                 </Box>
             ))}
         </Slider>
