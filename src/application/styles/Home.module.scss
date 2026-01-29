@@ -1,0 +1,41 @@
+.service {
+  background-color: #F5F8F9;
+}
+
+.serviceItem {
+  width: 250px;
+  background: #FFFFFF;
+  padding: 45px 40px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(222, 229, 234, 0.5);
+  transition: all 0.3s ease-in;
+
+  &:last-child {
+    margin-top: 40px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 15px #cbc9c9;
+  }
+
+  img {
+    height: 55px;
+    border-radius: 100%;
+  }
+
+  h6 {
+    color: #585858;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-top: 10px;
+    word-break: break-all;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}

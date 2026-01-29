@@ -1,5 +1,6 @@
 import React from 'react'
-import {NextPage} from "next";
+import { NextPage } from "next";
+import { PageLayout } from "@/shared/ui";
 
 const About: NextPage = () => {
     return (

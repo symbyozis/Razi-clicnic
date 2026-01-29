@@ -1,0 +1,39 @@
+.reviewsSlider {
+  :global {
+    .slick {
+      &-slide {
+        .imageWrap {
+          height: 420px;
+          border-radius: 20px;
+          transition: all 0.3s ease-in;
+          overflow: hidden;
+          margin-top: 80px;
+          img {
+            height: 100%;
+          }
+        }
+      }
+
+      &-current {
+        .imageWrap {
+          height: 500px;
+          margin-top: 0 !important;
+        }
+      }
+
+      &-arrow {
+        top: 70%;
+      }
+      &-prev {
+        left: -100px;
+      }
+
+      &-next {
+        right: auto;
+        left: -40px;
+      }
+    }
+  }
+}
+
+

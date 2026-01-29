@@ -1,7 +1,7 @@
 import React from 'react'
 import {NextPage} from "next";
-import PageLayout from "../layouts/PageLayout";
-import Grid2 from "@mui/material/Unstable_Grid2";
+import { PageLayout } from "@/shared/ui";
+import { Grid } from "@mui/material";
 import {
     Box, Button,
     Container,
@@ -11,8 +11,8 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import appConfig from '../app.config.json'
-import {phoneFormat} from "../utils/helpers/phoneFormat";
+import appConfig from '@/shared/config/app.config.json'
+import {phoneFormat} from "@/shared/lib";
 
 
 const Contacts: NextPage = () => {

@@ -1,20 +1,21 @@
 import { NextPage } from "next";
-
 import { Container, Button, Typography, Box, Card, TextField, MenuItem } from '@mui/material';
 import { Grid } from '@mui/material';
-// Grid version 2
 
-import MainLayout from '../layouts/MainLayout'
-import SectionLayout from "../layouts/SectionLayout";
+import {
+    MainLayout,
+    SectionLayout,
+    CarouselMain,
+    CarouselDoctors,
+    ServiceItem,
+    IServiceItem,
+    Checkup,
+    ICheckup,
+    CarouselReviews,
+    CarouselNews,
+} from "@/shared/ui";
 
-import { CarouselMain } from "../components/Carousels/Main";
-import { CarouselDoctors } from "../components/Carousels/Doctors";
-import { ServiceItem, IServiceItem } from "../components/ServiceItem"
-import { Checkup, ICheckup } from "../components/Cards/Checkup";
-
-import styles from '../styles/Home.module.scss'
-import CarouselReviews from "../components/Carousels/Reviews";
-import CarouselNews from "../components/Carousels/News";
+import styles from '@/application/styles/Home.module.scss';
 
 const serviceItems: IServiceItem[] = [
     {

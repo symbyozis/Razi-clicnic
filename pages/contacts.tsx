@@ -1,7 +1,7 @@
 import React from 'react'
 import {NextPage} from "next";
-import PageLayout from "../layouts/PageLayout";
-import Grid2 from "@mui/material/Unstable_Grid2";
+import { PageLayout } from "@/shared/ui";
+import { Grid } from "@mui/material";
 import {
     Box, Button,
     Container,
@@ -11,8 +11,8 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import appConfig from '../app.config.json'
-import {phoneFormat} from "../utils/helpers/phoneFormat";
+import appConfig from '@/shared/config/app.config.json'
+import {phoneFormat} from "@/shared/lib";
 
 
 const Contacts: NextPage = () => {
@@ -26,11 +26,11 @@ const Contacts: NextPage = () => {
                 }}
             >
                 <Container>
-                    <Grid2 container>
-                        <Grid2 md={5}>
+                    <Grid container>
+                        <Grid size={{ md: 5 }}>
 
-                        </Grid2>
-                        <Grid2 md={7}>
+                        </Grid>
+                        <Grid size={{ md: 7 }}>
                             <div>
                                 <Typography
                                     variant="h2"
@@ -50,8 +50,8 @@ const Contacts: NextPage = () => {
                                 >
                                     Наши контакты
                                 </Typography>
-                                <Grid2 container sx={{ marginTop: '30px'}}>
-                                    <Grid2 md={5} component="address" sx={{ fontStyle: 'normal'}}>
+                                <Grid container sx={{ marginTop: '30px'}}>
+                                    <Grid size={{ md: 5 }} component="address" sx={{ fontStyle: 'normal'}}>
                                         <List sx={{ width: 'max-content' }}>
                                             <ListItem sx={{
                                                 p: '0',
@@ -93,8 +93,8 @@ const Contacts: NextPage = () => {
                                                 </a>
                                             </ListItem>
                                         </List>
-                                    </Grid2>
-                                </Grid2>
+                                    </Grid>
+                                </Grid>
                             </div>
                             <Box sx={{ marginTop: '40px'}}>
                                 <Typography
@@ -164,8 +164,8 @@ const Contacts: NextPage = () => {
                                     </Button>
                                 </FormControl>
                             </Box>
-                        </Grid2>
-                    </Grid2>
+                        </Grid>
+                    </Grid>
                 </Container>
             </Box>
         </PageLayout>
