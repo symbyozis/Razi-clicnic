@@ -8,7 +8,7 @@ export interface IServiceItem {
 }
 
 export const ServiceItem: React.FC<IServiceItem> = (props) => {
-    const { image, title, text} = props
+    const { image, title, text } = props
     return (
         <div className={styles.serviceItem}>
             <img src={image} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import {NextPage} from "next";
+import { NextPage } from "next";
 import { PageLayout } from "@/shared/ui";
 import { Grid } from "@mui/material";
 import {
@@ -12,7 +12,7 @@ import {
     Typography
 } from "@mui/material";
 import appConfig from '@/shared/config/app.config.json'
-import {phoneFormat} from "@/shared/lib";
+import { phoneFormat } from "@/shared/lib";
 
 
 const Contacts: NextPage = () => {
@@ -50,8 +50,8 @@ const Contacts: NextPage = () => {
                                 >
                                     Наши контакты
                                 </Typography>
-                                <Grid container sx={{ marginTop: '30px'}}>
-                                    <Grid size={{ md: 5 }} component="address" sx={{ fontStyle: 'normal'}}>
+                                <Grid container sx={{ marginTop: '30px' }}>
+                                    <Grid size={{ md: 5 }} component="address" sx={{ fontStyle: 'normal' }}>
                                         <List sx={{ width: 'max-content' }}>
                                             <ListItem sx={{
                                                 p: '0',
@@ -61,7 +61,7 @@ const Contacts: NextPage = () => {
                                                 color: '#585858',
                                             }}>
 
-                                                <Box component="span" sx={{width: '100px'}}>Email</Box>
+                                                <Box component="span" sx={{ width: '100px' }}>Email</Box>
                                                 <a href={`mailto:${contacts.email}`}>
                                                     {contacts.email}
                                                 </a>
@@ -74,7 +74,7 @@ const Contacts: NextPage = () => {
                                                 color: '#585858',
                                             }}>
 
-                                                <Box component="span" sx={{width: '100px'}}>Телефон</Box>
+                                                <Box component="span" sx={{ width: '100px' }}>Телефон</Box>
                                                 <a href={`tel:${contacts.phone}`}>
                                                     {phoneFormat(contacts.phone)}
                                                 </a>
@@ -87,7 +87,7 @@ const Contacts: NextPage = () => {
                                                 color: '#585858',
                                             }}>
 
-                                                <Box component="span" sx={{width: '100px'}}>Адрес</Box>
+                                                <Box component="span" sx={{ width: '100px' }}>Адрес</Box>
                                                 <a href={appConfig.contacts.google_map_link}>
                                                     {contacts.address}
                                                 </a>
@@ -96,7 +96,7 @@ const Contacts: NextPage = () => {
                                     </Grid>
                                 </Grid>
                             </div>
-                            <Box sx={{ marginTop: '40px'}}>
+                            <Box sx={{ marginTop: '40px' }}>
                                 <Typography
                                     variant="h2"
                                     sx={{
@@ -115,7 +115,7 @@ const Contacts: NextPage = () => {
                                 >
                                     Напишите нам
                                 </Typography>
-                                <FormControl sx={{marginTop: '30px', width: '450px'}} component="form">
+                                <FormControl sx={{ marginTop: '30px', width: '450px' }} component="form">
                                     <div>
                                         <Box
                                             component="label"
@@ -131,7 +131,7 @@ const Contacts: NextPage = () => {
                                         <TextField
                                             size="small"
                                             fullWidth
-                                            sx={{mb: 2, background: 'rgba(var(--input-bg), .15)'}}
+                                            sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}
                                         />
                                     </div>
                                     <div>
@@ -152,13 +152,13 @@ const Contacts: NextPage = () => {
                                             multiline
                                             rows={5}
                                             maxRows={10}
-                                            sx={{mb: 2, background: 'rgba(var(--input-bg), .15)'}}
+                                            sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}
                                         />
                                     </div>
                                     <Button
                                         variant="contained"
                                         size="large"
-                                        sx={{ marginTop: '30px', width: 'max-content'}}
+                                        sx={{ marginTop: '30px', width: 'max-content' }}
                                     >
                                         Отправить сообщение
                                     </Button>

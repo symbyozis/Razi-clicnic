@@ -65,9 +65,8 @@ export const Header: React.FC = () => {
               {navItems.map(({ title, href }) => (
                 <Link
                   key={href}
-                  className={`${styles.navLink} ${
-                    pathname === href ? styles.navActive : ""
-                  }`}
+                  className={`${styles.navLink} ${pathname === href ? styles.navActive : ""
+                    }`}
                   underline="hover"
                   href={href}
                 >
