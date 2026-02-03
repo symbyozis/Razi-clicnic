@@ -15,26 +15,47 @@ const CarouselReviews = () => {
 		dots: false,
 		arrows: true,
 		asNavFor: slider || undefined,
+		dotsClass: "slick-dots slick-thumb",
 		responsive: [
 			{
 				breakpoint: 1201,
 				settings: {
 					slidesToShow: 3,
 					slidesToScroll: 1,
+					arrows: true,
+					dots: false
+				}
+			},
+			{
+				breakpoint: 900,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1,
+					arrows: true,
+					dots: false
 				}
 			},
 			{
 				breakpoint: 600,
 				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 485,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: false,
+					dots: true,
+					appendDots: (dots: any) => (
+						<Box
+							component="div"
+							sx={{
+								position: 'absolute',
+								bottom: '-50px',
+								width: '100%',
+								display: 'flex',
+								justifyContent: 'center'
+							}}
+						>
+							<ul style={{ margin: 0, padding: 0 }}>{dots}</ul>
+						</Box>
+					)
 				}
 			}
 		],
@@ -95,56 +116,73 @@ const CarouselReviews = () => {
 		},
 	]
 	return (
-		<Grid container spacing={3} alignItems="center">
-			<Grid size={{ md: 5 }}>
-				<Slider
-					{...settings}
-					ref={sliderRef => setSlider(sliderRef ?? undefined)}
+		<Box>
+			<Grid container spacing={3} alignItems="center">
+				<Grid
+					size={{ xs: 12, md: 7 }}
+					sx={{
+						order: { xs: 1, md: 2 },
+						position: 'relative',
+						paddingBottom: { xs: '50px', md: 0 }
+					}}
 				>
-					{reviews.map(review => (
-						<Box
-							key={review.id}
-							sx={{
-								textAlign: 'right'
-							}}
-						>
-							<Typography variant="h4">
-								{review.name}
-							</Typography>
-							<Typography variant="h6" sx={{ color: '#8596A7', mt: 1, mb: 4 }}>
-								{review.department}
-							</Typography>
-							<Typography sx={{ fontSize: 14 }}>
-								{review.text}
-							</Typography>
-						</Box>
-					))}
-				</Slider>
-			</Grid>
-			<Grid size={{ md: 7 }}>
-				<Slider
-					{...settingsNav}
-					ref={sliderNavRef => setSliderNav(sliderNavRef ?? undefined)}
+					<Slider
+						{...settingsNav}
+						ref={sliderNavRef => setSliderNav(sliderNavRef ?? undefined)}
+					>
+						{reviews.map(review => (
+							<div className="imageWrap" key={review.id}>
+								<Box
+									src={review.image}
+									component="img"
+									sx={{
+										width: '100%',
+										borderRadius: 'var(--border-radius)',
+										minHeight: { xs: 300, md: 420 },
+										height: { xs: 300, md: 420 },
+										objectFit: 'cover',
+										padding: '0 5px',
+									}}
+								>
+								</Box>
+							</div>
+						))}
+					</Slider>
+				</Grid>
+
+				<Grid
+					size={{ xs: 12, md: 5 }}
+					sx={{
+						order: { xs: 3, md: 1 }
+					}}
 				>
-					{reviews.map(review => (
-						<div className="imageWrap" key={review.id}>
+					<Slider
+						{...settings}
+						ref={sliderRef => setSlider(sliderRef ?? undefined)}
+					>
+						{reviews.map(review => (
 							<Box
-								src={review.image}
-								component="img"
+								key={review.id}
 								sx={{
-									width: '100%',
-									borderRadius: 'var(--border-radius)',
-									minHeight: 420,
-									objectFit: 'cover',
-									padding: '0 5px',
+									textAlign: { xs: 'center', md: 'right' },
+									px: { xs: 2, md: 0 }
 								}}
 							>
+								<Typography variant="h4" sx={{ fontSize: { xs: '1.5rem', md: '2.125rem' } }}>
+									{review.name}
+								</Typography>
+								<Typography variant="h6" sx={{ color: '#8596A7', mt: 1, mb: { xs: 2, md: 4 }, fontSize: { xs: '1rem', md: '1.25rem' } }}>
+									{review.department}
+								</Typography>
+								<Typography sx={{ fontSize: { xs: 13, md: 14 } }}>
+									{review.text}
+								</Typography>
 							</Box>
-						</div>
-					))}
-				</Slider>
+						))}
+					</Slider>
+				</Grid>
 			</Grid>
-		</Grid>
+		</Box>
 	)
 }
 

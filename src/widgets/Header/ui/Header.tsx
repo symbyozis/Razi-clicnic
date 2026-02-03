@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, Grid, Box, Link as MuiLink, IconButton } from "@mui/material";
+import { Container, Grid, Box, Link as MuiLink, IconButton, Drawer } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { phoneFormat } from "@/shared/lib";
 import { NavItem } from "@/shared/types";
 import appConfig from "@/shared/config/app.config.json";
@@ -18,6 +19,11 @@ const navItems: NavItem[] = [
 export const Header: React.FC = () => {
   const { pathname } = useRouter();
   const { contacts } = appConfig;
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
     <Box sx={{ py: { md: 5, xs: 1.5 }, position: "relative" }}>
@@ -59,7 +65,7 @@ export const Header: React.FC = () => {
               </Box>
             </Link>
           </Grid>
-          <Grid size={{ md: 7, xs: 6 }}>
+          <Grid size={{ md: 7, xs: 6 }} sx={{ pr: { xs: 0, md: undefined } }}>
             <Box
               sx={{
                 display: { md: 'flex', xs: 'none' },
@@ -82,12 +88,17 @@ export const Header: React.FC = () => {
             <Box sx={{
               display: { md: 'none', xs: 'flex' },
               justifyContent: "end",
+              alignItems: "center",
+              height: '100%'
             }}>
               <IconButton
                 size="large"
-                edge="start"
                 color="inherit"
                 aria-label="menu"
+                onClick={toggleMobileMenu}
+                sx={{
+                  padding: 0
+                }}
               >
                 <MenuIcon />
               </IconButton>
@@ -113,6 +124,97 @@ export const Header: React.FC = () => {
           </Grid>
         </Grid>
       </Container>
+
+      {/* Mobile Menu Drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileMenuOpen}
+        onClose={toggleMobileMenu}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: '100%',
+            backgroundColor: 'white',
+          }
+        }}
+      >
+        <Box
+          sx={{
+            width: '100%',
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            py: 4
+          }}
+        >
+          {/* Close Button */}
+          <IconButton
+            onClick={toggleMobileMenu}
+            sx={{
+              position: 'absolute',
+              top: 16,
+              right: 16,
+              padding: 0
+            }}
+          >
+            <CloseIcon sx={{ fontSize: 32 }} />
+          </IconButton>
+
+          {/* Navigation Items */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 3
+            }}
+          >
+            {navItems.map(({ title, href }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={toggleMobileMenu}
+                style={{
+                  textAlign: 'center',
+                  textDecoration: 'none'
+                }}
+              >
+                <Box
+                  sx={{
+                    fontSize: '24px',
+                    fontWeight: '500',
+                    color: pathname === href ? 'var(--primary-color)' : '#626262',
+                    transition: 'color 0.3s',
+                    '&:hover': {
+                      color: 'var(--primary-color)'
+                    }
+                  }}
+                >
+                  {title}
+                </Box>
+              </Link>
+            ))}
+          </Box>
+
+          {/* Phone Number */}
+          <Box sx={{ mt: 4 }}>
+            <MuiLink
+              href={`tel:${contacts.phone}`}
+              color="primary"
+              underline="hover"
+              sx={{
+                fontSize: "20px",
+                fontWeight: "500",
+                textAlign: 'center'
+              }}
+            >
+              {phoneFormat(contacts.phone)}
+            </MuiLink>
+          </Box>
+        </Box>
+      </Drawer>
     </Box>
   );
 };

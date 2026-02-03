@@ -19,6 +19,49 @@ const CarouselNews = () => {
 		slidesToScroll: 1,
 		autoplay: false,
 		arrows: true,
+		variableWidth: false,
+		adaptiveHeight: false,
+		responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					arrows: true
+				}
+			},
+			{
+				breakpoint: 900,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1,
+					arrows: true
+				}
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: false,
+					dots: true,
+					appendDots: (dots: any) => (
+						<Box
+							component="div"
+							sx={{
+								position: 'absolute',
+								bottom: '-50px',
+								width: '100%',
+								display: 'flex',
+								justifyContent: 'center'
+							}}
+						>
+							<ul style={{ margin: 0, padding: 0 }}>{dots}</ul>
+						</Box>
+					)
+				}
+			}
+		],
 	}
 
 	const items = [
@@ -60,15 +103,22 @@ const CarouselNews = () => {
 		},
 	]
 	return (
-		<Grid container px={{ display: 'block' }}>
+		<Box sx={{
+			width: '100%',
+			position: 'relative',
+			paddingBottom: { xs: '50px', md: 0 },
+			'& .slick-list': {
+				margin: '0 -10px'
+			},
+			'& .slick-slide': {
+				padding: '0 10px'
+			}
+		}}>
 			<Slider
 				{...settings}
 			>
 				{items.map(item => (
 					<Box
-						sx={{
-							padding: '0 5px'
-						}}
 						key={item.id}
 					>
 						<Box
@@ -76,12 +126,13 @@ const CarouselNews = () => {
 							className="imageWrap"
 							sx={{
 								outline: 'none',
-								height: '320px',
+								height: { xs: '250px', md: '320px' },
 								maxHeight: '400px',
 								borderRadius: '26px',
 								overflow: 'hidden',
 								background: `url(${item.image}) no-repeat center`,
-
+								backgroundSize: 'cover',
+								margin: 0
 							}}
 						>
 							<Box
@@ -96,7 +147,7 @@ const CarouselNews = () => {
 								<Box
 									component="figcaption"
 									sx={{
-										padding: '0 40px 20px 40px',
+										padding: { xs: '0 20px 15px 20px', md: '0 40px 20px 40px' },
 										width: '100%',
 										color: 'white'
 									}}
@@ -104,7 +155,7 @@ const CarouselNews = () => {
 									<Typography>
 										{/*{new Date().toLocaleDateString()}*/}
 									</Typography>
-									<Typography variant="h6" sx={{ mb: 1 }}>
+									<Typography variant="h6" sx={{ mb: 1, fontSize: { xs: '1rem', md: '1.25rem' } }}>
 										{item.title}
 									</Typography>
 								</Box>
@@ -113,7 +164,7 @@ const CarouselNews = () => {
 					</Box>
 				))}
 			</Slider>
-		</Grid>
+		</Box>
 	)
 }
 

@@ -1,17 +1,18 @@
 import React from 'react';
-import {Box, Container, Typography} from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 interface ISectionLayoutProps {
     title: string,
     children: React.ReactNode,
-    container?: boolean
+    container?: boolean,
+    mobilePadding?: boolean
 }
 
 const SectionLayout: React.FC<ISectionLayoutProps> = (props) => {
-    const { title, children, container = true } = props
+    const { title, children, mobilePadding, container = true } = props
     return (
-        <Box sx={{ py: 6 }}>
-            <Container sx={{ mb: 10 }}>
+        <Box sx={{ py: { md: 6, xs: 3 }, px: mobilePadding ? { md: 0, xs: 2 } : null }}>
+            <Container sx={{ mb: { md: 10, xs: 4 } }}>
                 <Typography
                     variant="h2"
                     sx={{
@@ -33,8 +34,8 @@ const SectionLayout: React.FC<ISectionLayoutProps> = (props) => {
                 </Typography>
             </Container>
             {container
-              ? <Container>{children}</Container>
-              : <Box>{children}</Box>
+                ? <Container>{children}</Container>
+                : <Box>{children}</Box>
             }
         </Box>
     )

@@ -25,7 +25,7 @@ const Doctor: React.FC<IDoctor> = (props) => {
                     src={props.image}
                 />
             </Grid>
-            <Grid size={{ md: 6 }} sx={{ paddingLeft: 4 }}>
+            <Grid size={{ md: 6 }} sx={{ paddingLeft: { md: 4 } }}>
                 <Typography variant="h4" sx={{ mb: 1 }}>
                     {props.name}
                 </Typography>

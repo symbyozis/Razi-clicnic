@@ -63,34 +63,47 @@ const checkups: ICheckup[] = [
 const HomePage: NextPage = () => {
   return (
     <MainLayout>
-      <Box sx={{ pb: 5 }}>
+      <Box sx={{ pb: { xs: 3, md: 5 } }}>
         <Container>
           <CarouselMain />
         </Container>
       </Box>
-      <Box sx={{ py: 5 }} className="bg-[#F5F8F9]">
+      <Box sx={{ py: { xs: 3, md: 5 } }} className="bg-[#F5F8F9]">
         <Container>
           <Grid container spacing={3} alignItems={"center"}>
-            <Grid size={{ md: 4 }}>
-              <Typography variant="h3">
+            <Grid size={{ xs: 12, md: 4 }}>
+              <Typography variant="h3" sx={{ fontSize: { xs: '1.75rem', md: '3rem' } }}>
                 Почему пациенты выбирают нашу клинику?
               </Typography>
-              <Typography sx={{ my: 4 }}>
+              <Typography sx={{ my: { xs: 2, md: 4 } }}>
                 Dr Linda Freemanis one of the best in, In the world, In the Galaxy. There are many variations of passages of Lorem available, but the have suffered alteration in some form, by injected humour.
               </Typography>
-              <Button variant="contained">Learn more</Button>
+              <Button variant="contained" sx={{ mb: { xs: 3, md: 0 } }}>Learn more</Button>
             </Grid>
-            <Grid size={{ md: 7 }} offset={{ md: 1 }}>
-              <Grid container>
-                <Grid size={{ md: 6 }}>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end', pr: 3 }}>
+            <Grid size={{ xs: 12, md: 7 }} offset={{ xs: 0, md: 1 }}>
+              <Grid container spacing={{ xs: 0, md: 0 }}>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: { xs: 'center', md: 'end' },
+                    pr: { xs: 0, md: 3 },
+                    gap: 2
+                  }}>
                     {serviceItems.filter((_, i) => i < 2).map(item => (
                       <ServiceItem key={item.title} {...item} />
                     ))}
                   </Box>
                 </Grid>
-                <Grid size={{ md: 6 }}>
-                  <Box sx={{ pt: 5, mt: 3 }}>
+                <Grid size={{ xs: 12, md: 6 }} sx={{ mt: { xs: 2, md: 0 } }}>
+                  <Box sx={{
+                    pt: { xs: 0, md: 5 },
+                    mt: { xs: 0, md: 3 },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: { xs: 'center', md: 'flex-start' },
+                    gap: 2
+                  }}>
                     {serviceItems.filter((_, i) => i >= 2).map(item => (
                       <ServiceItem key={item.title} {...item} />
                     ))}
@@ -103,10 +116,10 @@ const HomePage: NextPage = () => {
       </Box>
       <SectionLayout title="Наши чекапы">
         <Grid container spacing={3} alignItems={"center"}>
-          {checkups.map(checkup => (
-            <Grid size={{ md: 4 }} key={checkup.name} sx={{
+          {checkups.map((checkup, index) => (
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={checkup.name} sx={{
               '&:nth-of-type(2)': {
-                transform: 'scaleY(1.1)'
+                transform: { xs: 'none', md: 'scaleY(1.1)' }
               },
             }}>
               <Checkup {...checkup} />
@@ -119,13 +132,14 @@ const HomePage: NextPage = () => {
       </SectionLayout>
       <SectionLayout title="Записаться на прием">
         <Card sx={{
-          py: 10,
+          py: { xs: 3, md: 10 },
+          px: { xs: 2, md: 0 },
           border: '1px solid rgba(133, 150, 167, 0.36)',
           boxShadow: 'none',
-          borderRadius: '20px'
+          borderRadius: { xs: '10px', md: '20px' }
         }}>
           <Grid container alignItems="center">
-            <Grid size={{ md: 4 }}>
+            <Grid size={{ xs: 12, md: 4 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box
                 component="img"
                 src="https://placehold.co/900"
@@ -136,12 +150,42 @@ const HomePage: NextPage = () => {
                 }}
               />
             </Grid>
-            <Grid size={{ md: 8 }} sx={{ px: 5 }}>
-              <Grid container spacing={3}>
-                <Grid size={{ md: 6 }}>
+            <Grid size={{ xs: 12, md: 8 }} sx={{ px: { xs: 2, md: 5 } }}>
+              <Grid container spacing={{ xs: 2, md: 3 }}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <div>
                     <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
-                      Имя
+                      ФИО <Box component="span" sx={{ color: 'red' }}>*</Box>
+                    </Box>
+                    <TextField size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }} />
+                  </div>
+                  <div>
+                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
+                      Доктор <Box component="span" sx={{ color: 'red' }}>*</Box>
+                    </Box>
+                    <TextField select size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}>
+                      {['Гинеколог', 'Невролог', 'Педиатр'].map((option) => (
+                        <MenuItem key={option} value={option}>{option}</MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                  <div>
+                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
+                      Дата приема <Box component="span" sx={{ color: 'red' }}>*</Box>
+                    </Box>
+                    <TextField type="date" size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }} />
+                  </div>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <div>
+                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
+                      Дата рождения <Box component="span" sx={{ color: 'red' }}>*</Box>
+                    </Box>
+                    <TextField type="date" size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }} />
+                  </div>
+                  <div>
+                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
+                      Телефон <Box component="span" sx={{ color: 'red' }}>*</Box>
                     </Box>
                     <TextField size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }} />
                   </div>
@@ -151,46 +195,8 @@ const HomePage: NextPage = () => {
                     </Box>
                     <TextField size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }} />
                   </div>
-                  <div>
-                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
-                      Доктор
-                    </Box>
-                    <TextField select size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}>
-                      {['Гинеколог', 'Невролог', 'Педиатр'].map((option) => (
-                        <MenuItem key={option} value={option}>{option}</MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                  <Button variant="contained" sx={{ marginTop: '20px' }}>Создать запись</Button>
                 </Grid>
-                <Grid size={{ md: 6 }}>
-                  <div>
-                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
-                      Ваш пол
-                    </Box>
-                    <TextField select size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }}>
-                      {['Муж.', 'Жен.'].map((option) => (
-                        <MenuItem key={option} value={option}>{option}</MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                  <div>
-                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
-                      Дата приема
-                    </Box>
-                    <TextField type="date" size="small" fullWidth sx={{ mb: 2, background: 'rgba(var(--input-bg), .15)' }} />
-                  </div>
-                  <div>
-                    <Box component="label" sx={{ fontSize: '14px', fontWeight: '500', lineHeight: '30px', color: '#585858' }}>
-                      Отделение
-                    </Box>
-                    <TextField select size="small" fullWidth>
-                      {['Гинекология', 'Терапия', 'Урология'].map((option) => (
-                        <MenuItem key={option} value={option}>{option}</MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                </Grid>
+                <Button variant="contained" sx={{ width: { xs: '100%', md: 'auto' } }}>Создать запись</Button>
               </Grid>
             </Grid>
           </Grid>
@@ -199,22 +205,28 @@ const HomePage: NextPage = () => {
       <SectionLayout title="Отзывы" container={false}>
         <CarouselReviews />
       </SectionLayout>
-      <SectionLayout title="Наши новости" container={false}>
-        <Box sx={{ marginLeft: 'calc((100% - min(90%, 70.5rem))/2)' }}>
+      <SectionLayout title="Наши новости" container={false} mobilePadding>
+        <Box sx={{
+          marginLeft: {
+            xs: '0',
+            md: 'calc((100% - min(90%, 70.5rem))/2)'
+          },
+          overflow: 'hidden'
+        }}>
           <CarouselNews />
         </Box>
       </SectionLayout>
-      <section>
+      <Box component="section" sx={{ height: { xs: '300px', md: '450px' } }}>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11625.100768565688!2d44.8098561!3d43.245654!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb3f5e856b63c4858!2z0JfQtNC-0YDQvtCy0YzQtSDQv9C70Y7RgQ!5e0!3m2!1sru!2sru!4v1673267497613!5m2!1sru!2sru"
           width="100%"
-          height="450"
+          height="100%"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
-      </section>
+      </Box>
     </MainLayout>
   );
 }

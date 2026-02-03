@@ -8,7 +8,21 @@ export const CarouselDoctors: React.FC = () => {
         dots: false,
         infinite: true,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        arrows: true,
+        speed: 400,
+        autoplay: false,
+        responsive: [
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    dots: true
+                }
+            }
+        ],
     };
 
     const slides: IDoctor[] = [

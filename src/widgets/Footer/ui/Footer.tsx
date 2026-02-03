@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
         <Container>
           <Box
             sx={{
-              pt: 8,
+              pt: { md: 8, xs: 2 },
               pb: 4,
             }}
           >

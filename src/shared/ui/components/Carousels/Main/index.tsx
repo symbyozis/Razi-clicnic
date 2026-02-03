@@ -15,7 +15,30 @@ export const CarouselMain: React.FC = () => {
         dots: false,
         infinite: true,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        arrows: true,
+        appendDots: (dots: React.ReactNode) => (
+            <Box sx={{
+                position: 'absolute',
+                bottom: { xs: '250px', md: 'auto' },
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+            }}>
+                <ul style={{ margin: 0, padding: 0 }}>{dots}</ul>
+            </Box>
+        ),
+        responsive: [
+            {
+                breakpoint: 900,
+                settings: {
+                    dots: true,
+                    arrows: false
+                }
+            }
+        ]
     };
 
     const slides: TSlide[] = [
@@ -39,25 +62,36 @@ export const CarouselMain: React.FC = () => {
         }
     ]
     return (
-        <Slider {...settings}>
-            {slides.map(slide => (
-                <Box key={slide.title}>
-                    <Grid container alignItems="center" spacing={3}>
-                        <Grid size={{ md: 4 }}>
-                            <Typography variant="h1">{slide.title}</Typography>
-                            <Typography sx={{ my: 3 }}>{slide.text}</Typography>
-                            <Button variant="contained" href={slide.link}>Make Appointment</Button>
+        <Box sx={{
+            position: 'relative',
+            pb: { xs: '60px', md: 0 }
+        }}>
+            <Slider {...settings}>
+                {slides.map(slide => (
+                    <Box key={slide.title}>
+                        <Grid container alignItems="center" spacing={3}>
+                            <Grid size={{ xs: 12, md: 4 }} sx={{ order: { xs: 2, md: 1 } }}>
+                                <Typography variant="h1" sx={{ fontSize: { xs: '1.75rem', md: '3rem' } }}>
+                                    {slide.title}
+                                </Typography>
+                                <Typography sx={{ my: { xs: 2, md: 3 } }}>{slide.text}</Typography>
+                                <Button variant="contained" href={slide.link}>Make Appointment</Button>
+                            </Grid>
+                            <Grid size={{ xs: 12, md: 8 }} sx={{ order: { xs: 1, md: 2 }, mb: { xs: 2, md: 0 }, pb: { xs: '50px', md: 0 } }}>
+                                <figure
+                                    className="w-full bg-no-repeat bg-cover bg-center rounded-[20px]"
+                                    style={{
+                                        backgroundImage: `url(${slide.image})`,
+                                        height: 'clamp(300px, 76vh, 76vh)',
+                                        minHeight: '300px'
+                                    }}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid size={{ md: 8 }}>
-                            <figure
-                                className="w-full bg-no-repeat bg-cover bg-center h-[76vh] min-h-[500px] rounded-[20px]"
-                                style={{ backgroundImage: `url(${slide.image})` }}
-                            />
-                        </Grid>
-                    </Grid>
-                </Box>
-            ))}
-        </Slider>
+                    </Box>
+                ))}
+            </Slider>
+        </Box>
     );
 }
 
