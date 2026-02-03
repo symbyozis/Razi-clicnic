@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, Grid, Box, Link as MuiLink } from "@mui/material";
+import { Container, Grid, Box, Link as MuiLink, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { phoneFormat } from "@/shared/lib";
 import { NavItem } from "@/shared/types";
 import appConfig from "@/shared/config/app.config.json";
@@ -19,17 +20,20 @@ export const Header: React.FC = () => {
   const { contacts } = appConfig;
 
   return (
-    <Box sx={{ py: 5, position: "relative" }}>
+    <Box sx={{ py: { md: 5, xs: 1.5 }, position: "relative" }}>
       {pathname === "/" && (
-        <div className="bg-[#F5F8F9] w-1/2 absolute top-0 right-0 h-[80vh] z-0 min-h-[600px] rounded-bl-[20px]" />
+        <div className="bg-[#F5F8F9] w-1/2 absolute top-0 right-0 h-[80vh] z-0 min-h-[600px] rounded-bl-[20px] hidden md:block" />
       )}
       <Container>
-        <Grid container alignItems="center" spacing={3}>
-          <Grid size={{ md: 3 }}>
+        <Grid container alignItems="center" spacing={{ md: 3, xs: 1 }}>
+          <Grid size={{ md: 3, xs: 6 }}>
             <Link href="/" style={{ display: 'inline-block' }}>
-              <svg
-                width="134"
-                height="58"
+              <Box
+                component="svg"
+                sx={{
+                  width: { xs: 104, md: 134 },
+                  height: { xs: 40, md: 58 },
+                }}
                 viewBox="0 0 844 204"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,13 +56,13 @@ export const Header: React.FC = () => {
                   d="M131.503 43.8276H157.368V69.9558H174.266V43.8276H200.136V27.1883H174.266V0.930725H157.368V27.1883H131.503V43.8276Z"
                   fill="#21CDAA"
                 />
-              </svg>
+              </Box>
             </Link>
           </Grid>
-          <Grid size={{ md: 7 }}>
+          <Grid size={{ md: 7, xs: 6 }}>
             <Box
               sx={{
-                display: "flex",
+                display: { md: 'flex', xs: 'none' },
                 justifyContent: "center",
                 position: "relative",
                 gap: 4,
@@ -75,11 +79,24 @@ export const Header: React.FC = () => {
                 </Link>
               ))}
             </Box>
+            <Box sx={{
+              display: { md: 'none', xs: 'flex' },
+              justifyContent: "end",
+            }}>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
           </Grid>
           <Grid size={{ md: 2 }}>
             <Box
               sx={{
-                display: "flex",
+                display: { md: 'flex', xs: 'none' },
                 justifyContent: "end",
                 position: "relative",
               }}
